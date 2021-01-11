@@ -118,12 +118,25 @@ function onDown()
 }
 function load() {
     create();
+
 } // load
 
 function create() {
     /* ***************************** */
     /* Create your Game Objects here */
     /* ***************************** */
+    /*buttons*/
+
+    if(document.getElementById("reducegravity")!=null)
+    document.getElementById("reducegravity")?.onclick= reduceGravity;
+    if(document.getElementById("increasegravity")!=null)
+    document.getElementById("increasegravity")?.onclick= increaseGravity;
+    if(document.getElementById("reducecount")!=null)
+    document.getElementById("reducecount")?.onclick= reduceCount;
+    if(document.getElementById("increasecount")!=null)
+    document.getElementById("increasecount")?.onclick= increaseCount;
+
+
 
     /* Sprite */
     engine.stage.addChild(engine.spriteContainer);
@@ -180,6 +193,50 @@ engine.elapsedTime=0;
     if(document.getElementById("areaCount"))
     (<HTMLInputElement>document.getElementById("areaCount")).value=engine.areainRect.toString()+ "px^2";
 } // update
+
+function reduceCount()
+{
+    if(document.getElementById("shapesperSecond")!=null)
+    {
+        
+        var value=parseInt((<HTMLInputElement>document.getElementById("shapesperSecond")).value,10)-1;
+        (<HTMLInputElement>document.getElementById("shapesperSecond")).value=value.toString();
+    }
+    engine.spritesperSecond-=1;
+}
+
+function increaseCount()
+{
+    if(document.getElementById("shapesperSecond")!=null)
+    {
+        
+        var value=parseInt((<HTMLInputElement>document.getElementById("shapesperSecond")).value,10)+1;
+        (<HTMLInputElement>document.getElementById("shapesperSecond")).value=value.toString();
+    }
+    engine.spritesperSecond+=1;
+}
+function reduceGravity()
+{
+    if(document.getElementById("shapesGravitybox")!=null)
+    {
+        
+        var value=parseInt((<HTMLInputElement>document.getElementById("shapesGravitybox")).value,10)-1;
+        (<HTMLInputElement>document.getElementById("shapesGravitybox")).value=value.toString();
+    }
+    engine.gravityValue-=1;
+}
+
+function increaseGravity()
+{
+    if(document.getElementById("shapesGravitybox")!=null)
+    {
+        
+        var value=parseInt((<HTMLInputElement>document.getElementById("shapesGravitybox")).value,10)+1;
+        (<HTMLInputElement>document.getElementById("shapesGravitybox")).value=value.toString();
+    }
+    engine.gravityValue+=1;
+}
+
 
 function resize() {
 
