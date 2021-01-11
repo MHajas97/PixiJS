@@ -55,6 +55,7 @@ class Engine {
         this.elapsedTime=0;
         this.currShapes=new PIXI.Text((this.shapesinRect).toString());
         this.currArea=new PIXI.Text(this.areainRect.toString());
+
     } // constructor
 } // Engine
 
@@ -200,9 +201,12 @@ function reduceCount()
     {
         
         var value=parseInt((<HTMLInputElement>document.getElementById("shapesperSecond")).value,10)-1;
-        (<HTMLInputElement>document.getElementById("shapesperSecond")).value=value.toString();
+        if(value>=1)
+        {(<HTMLInputElement>document.getElementById("shapesperSecond")).value=value.toString();
+        engine.spritesperSecond-=1;
     }
-    engine.spritesperSecond-=1;
+    }
+
 }
 
 function increaseCount()
@@ -211,9 +215,12 @@ function increaseCount()
     {
         
         var value=parseInt((<HTMLInputElement>document.getElementById("shapesperSecond")).value,10)+1;
+        if(value>=1)
+        {
         (<HTMLInputElement>document.getElementById("shapesperSecond")).value=value.toString();
+        engine.spritesperSecond+=1;
     }
-    engine.spritesperSecond+=1;
+    }
 }
 function reduceGravity()
 {
@@ -221,9 +228,13 @@ function reduceGravity()
     {
         
         var value=parseInt((<HTMLInputElement>document.getElementById("shapesGravitybox")).value,10)-1;
-        (<HTMLInputElement>document.getElementById("shapesGravitybox")).value=value.toString();
+        if(value>=1)
+        {
+            (<HTMLInputElement>document.getElementById("shapesGravitybox")).value=value.toString();
+            engine.gravityValue-=1;
+        }
     }
-    engine.gravityValue-=1;
+    
 }
 
 function increaseGravity()
@@ -232,9 +243,13 @@ function increaseGravity()
     {
         
         var value=parseInt((<HTMLInputElement>document.getElementById("shapesGravitybox")).value,10)+1;
-        (<HTMLInputElement>document.getElementById("shapesGravitybox")).value=value.toString();
+        if(value>=1)
+        {
+            (<HTMLInputElement>document.getElementById("shapesGravitybox")).value=value.toString();
+            engine.gravityValue+=1;
+        }
     }
-    engine.gravityValue+=1;
+
 }
 
 
